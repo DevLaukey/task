@@ -1,0 +1,9 @@
+.all-posts {
+  width: calc(100% - 370px);
+  float: left;
+}
+
+.bookmarks-sidebar {
+  width: 360px;
+  float: right;
+}

@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  width: 100vw;
+}
+
+.btn {
+  background: #fff;
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+a.btn {
+  text-decoration: none;
+  color: #000;
+}
+
+.btn:hover {
+  cursor: pointer;
+  border-color: #000;
+}
+
+
+
+.input-title {
+  font-size: 32px;
+  width: 100%;
+  font-weight: 700;
+  border: none;
+  box-shadow: none;
+  padding: 15px 0;
+}
+
+.input-title:focus {
+  outline: none;
+}
+
+.richtext-editor {
+  width: calc(100% / 1.35);
+  margin: 0 auto;
+}
+
+.RichEditor-styleButton {
+  background-color: #000;
+  color: #fff;
+  padding: 2px 5px;
+  margin: 0;
+  margin-right: 10px;
+  border: 2px solid transparent;
+}
+
+.RichEditor-activeButton {
+  border-color: #000;
+  color: #000;
+  background-color: transparent;
+}
+
+.public-DraftEditorPlaceholder-root {
+  padding: 0;
+  position: absolute;
+  color: rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.public-DraftEditorPlaceholder-inner {
+  font-size: 18px;
+}
+
+.msg-success {
+  color: #4caf50;
+}
+
+.msg-error {
+  color: #f44336;
+}
+

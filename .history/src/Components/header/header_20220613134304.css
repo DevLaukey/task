@@ -1,0 +1,8 @@
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    margin: 20px 10px;
+    width: 90vw;
+    position: sticky;
+    top: 0;
+}

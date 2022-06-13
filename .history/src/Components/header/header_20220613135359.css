@@ -1,0 +1,13 @@
+header {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  box-shadow: 10px 10px 19px #d0d0d0, -10px -10px 19px #f0f0f0;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 10px;
+  width: 90vw;
+}

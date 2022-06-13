@@ -1,0 +1,4 @@
+.all-posts {
+  width: calc(100% - 370px);
+  float: left;
+}

@@ -1,0 +1,27 @@
+
+footer {
+  clear: both;
+  padding: 60px 0;
+}
+
+.footer ul {
+  margin: 0;
+  padding: 0;
+  padding-top: 60px;
+  border-top: solid 1px rgba(0, 0, 0, 0.10);
+  text-align: center;
+}
+
+.footer ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.footer ul li a {
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
