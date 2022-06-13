@@ -64,8 +64,8 @@ export default class App extends Component {
   render() {
     return (
       <Router basename="/react-mini-blog">
-        <div className="App">
           <Route path="/login" render={(props) => <Login />}/>
+        <div className="App">
           <Route path="*" render={(props) => <Header {...props} />} />
           <Route
             exact
