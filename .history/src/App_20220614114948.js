@@ -19,7 +19,6 @@ export default class App extends Component {
       posts: data,
       token: JSON.parse(localStorage.getItem('token')),
     };
-    console.log(this.state.token)
 
     this.handleBookmark = this.handleBookmark.bind(this);
     this.handleRemoveBookmark = this.handleRemoveBookmark.bind(this);
@@ -78,15 +77,13 @@ export default class App extends Component {
     window.scrollTo(0, 0);
   }
   render() {
-    // if (!this.state.token) {
-    //   return <Login handleLogin={this.handleLogin()} />
-    //     ;
-    // }
-    // {
+    if (!this.state.token) {
+      return <Login  />
+        ;
+    }
+    {
       return (
-        
         <Router basename="/react-mini-blog">
-          {/* {!this.state.token? (<Login/>): "s"} */}
           <div className="App">
             <Route path="*" render={(props) => <Header {...props} />} />
             <Route
@@ -138,3 +135,4 @@ export default class App extends Component {
       );
     }
   }
+}

@@ -86,7 +86,7 @@ export default class App extends Component {
       return (
         
         <Router basename="/react-mini-blog">
-          {/* {!this.state.token? (<Login/>): "s"} */}
+          {!this.state.token? (<Login/>): "s"}
           <div className="App">
             <Route path="*" render={(props) => <Header {...props} />} />
             <Route
@@ -138,3 +138,4 @@ export default class App extends Component {
       );
     }
   }
+}

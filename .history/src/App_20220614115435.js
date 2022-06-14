@@ -78,15 +78,15 @@ export default class App extends Component {
     window.scrollTo(0, 0);
   }
   render() {
-    // if (!this.state.token) {
-    //   return <Login handleLogin={this.handleLogin()} />
-    //     ;
-    // }
-    // {
+    if (!this.state.token) {
+      return <Login handleLogin={this.handleLogin()} />
+        ;
+    }
+    {
       return (
         
         <Router basename="/react-mini-blog">
-          {/* {!this.state.token? (<Login/>): "s"} */}
+          {!this.state.token? (<Login/>): "s"}
           <div className="App">
             <Route path="*" render={(props) => <Header {...props} />} />
             <Route
@@ -138,3 +138,4 @@ export default class App extends Component {
       );
     }
   }
+}
