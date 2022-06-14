@@ -1,7 +1,7 @@
 {
   "name": "task",
   "version": "0.1.0",
-  "homepage": "/",
+  "homepage": "https://devlaukey.github.io/task",
   "private": true,
   "dependencies": {
     "axios": "^0.27.2",
@@ -24,9 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
+    "eject": "react-scripts eject"
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+  "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "cors": "^2.8.5",
