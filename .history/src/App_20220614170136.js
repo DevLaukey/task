@@ -8,7 +8,7 @@ import Content from "./Components/content/Content";
 import Bookmark from "./Components/content/Bookmark";
 import NewStory from "./Components/posts/NewStory";
 import SinglePost from "./Components/posts/SinglePost";
-// import Login from "./Components/login/Login";
+import Login from "./Components/login/Login";
 
 
 
@@ -16,13 +16,12 @@ import SinglePost from "./Components/posts/SinglePost";
 export default class App extends Component {
   constructor(props) {
     super(props);
-    //  const token = {
-    //    logged: false,
-    //  };
-    // localStorage.setItem("token", JSON.stringify('token',token));
+     const token = {
+       logged: false,
+     };
     this.state = {
       posts: data,
-      token: JSON.parse(localStorage.getItem("token")),
+      token: JSON.parse(localStorage.getItem(token),
     };
 
     this.handleBookmark = this.handleBookmark.bind(this);
@@ -77,7 +76,7 @@ export default class App extends Component {
     window.scrollTo(0, 0);
   }
   render() {
-    // if (this.state.token.logged === false) return <Login  />;
+    if (this.state.token.logged === false) return <Login token={token} />;
 
     return (
       <Router>

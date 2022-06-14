@@ -8,7 +8,7 @@ import Content from "./Components/content/Content";
 import Bookmark from "./Components/content/Bookmark";
 import NewStory from "./Components/posts/NewStory";
 import SinglePost from "./Components/posts/SinglePost";
-// import Login from "./Components/login/Login";
+import Login from "./Components/login/Login";
 
 
 
@@ -16,10 +16,10 @@ import SinglePost from "./Components/posts/SinglePost";
 export default class App extends Component {
   constructor(props) {
     super(props);
-    //  const token = {
-    //    logged: false,
-    //  };
-    // localStorage.setItem("token", JSON.stringify('token',token));
+     const token = {
+       logged: false,
+     };
+    localStorage.setItem("token", JSON.stringify('token',token));
     this.state = {
       posts: data,
       token: JSON.parse(localStorage.getItem("token")),

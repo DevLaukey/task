@@ -16,10 +16,10 @@ import SinglePost from "./Components/posts/SinglePost";
 export default class App extends Component {
   constructor(props) {
     super(props);
-    //  const token = {
-    //    logged: false,
-    //  };
-    // localStorage.setItem("token", JSON.stringify('token',token));
+     const token = {
+       logged: false,
+     };
+    localStorage.setItem("token", JSON.stringify('token',token));
     this.state = {
       posts: data,
       token: JSON.parse(localStorage.getItem("token")),
