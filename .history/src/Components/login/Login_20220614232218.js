@@ -34,10 +34,10 @@ export default ({ toggleState }) => {
 
   };
   return (
-    <div className="login-box">
+    <div class="login-box">
       <h2>Login</h2>
       <form onSubmit={handleLogins}>
-        <div className="user-box">
+        <div class="user-box">
           <input
             type="text"
             name="email"
@@ -45,7 +45,7 @@ export default ({ toggleState }) => {
           />
           <label>Email</label>
         </div>
-        <div className="user-box">
+        <div class="user-box">
           <input
             type="password"
             name="password"
@@ -57,10 +57,6 @@ export default ({ toggleState }) => {
         <button className="btn " type="submit">
           Submit
         </button>
-        <p>To login in use :
-          <span>Email</span> testuser@gmail.com
-<span>Password</span>testuser
-        </p>
       </form>
     </div>
   );

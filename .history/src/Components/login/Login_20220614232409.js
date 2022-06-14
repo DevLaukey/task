@@ -57,10 +57,6 @@ export default ({ toggleState }) => {
         <button className="btn " type="submit">
           Submit
         </button>
-        <p>To login in use :
-          <span>Email</span> testuser@gmail.com
-<span>Password</span>testuser
-        </p>
       </form>
     </div>
   );
