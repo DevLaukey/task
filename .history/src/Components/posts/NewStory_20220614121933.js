@@ -184,8 +184,8 @@ export default class NewStory extends Component {
             /> */}
           {/* <VideoEditor /> */}
           <div>
-            <div className="dropzone">
-              <h2>Upload Video or Image</h2>
+            <div className="row">
+              <label>Upload</label>
               <div className="row-input">
                 <span>{path ? path : "Upload Image /Video"}</span>
                 <input

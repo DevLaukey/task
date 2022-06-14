@@ -13,7 +13,7 @@ export default ({ post, handleBookmark, handleRemoveBookmark }) => {
         <Link to={`/post/${id}`}>{title}</Link>
       </h3>
       {isVideo ? 
-            <video src={path} className="image" autoPlay loop controls />
+            <video src={path} autoPlay loop controls />
         
  
       : <img className="image" src={path} alt={id} />}
