@@ -41,7 +41,10 @@ export default class App extends Component {
     this.setState({ posts });
   }
 
+  // handleLogin() {
+  //   return
 
+  // }
   handleRemoveBookmark(data) {
     let posts = this.state.posts;
     posts = posts.map((post) =>
@@ -73,7 +76,7 @@ export default class App extends Component {
     if (this.state.token.logged === false) return <Login />;
 
     return (
-      <Router>
+      <Router basename="/react-mini-blog">
         <div className="App">
           <Route path="*" render={(props) => <Header {...props} />} />
           <Route

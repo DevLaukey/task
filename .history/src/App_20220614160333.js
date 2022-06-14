@@ -41,7 +41,10 @@ export default class App extends Component {
     this.setState({ posts });
   }
 
+  // handleLogin() {
+  //   return
 
+  // }
   handleRemoveBookmark(data) {
     let posts = this.state.posts;
     posts = posts.map((post) =>
@@ -70,56 +73,62 @@ export default class App extends Component {
     window.scrollTo(0, 0);
   }
   render() {
+
+
     if (this.state.token.logged === false) return <Login />;
+    
+    
+      return (
+        <Router basename="/react-mini-blog">
+          <div className="App">
+            <Route path="*" render={(props) => <Header {...props} />} />
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Content
+                  posts={this.state.posts}
+                  bookmarks={this.state.posts.filter((post) => post.bookmark)}
+                  handleBookmark={this.handleBookmark}
+                  handleRemoveBookmark={this.handleRemoveBookmark}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/new"
+              render={() => (
+                <NewStory handleSubmission={this.handleSubmission} />
+              )}
+            />
+            <Route
+              exact
+              path="/bookmark"
+              render={() => (
+                <Bookmark
+                  bookmarks={this.state.posts.filter((post) => post.bookmark)}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/post/:id"
+              render={(props) => (
+                <SinglePost
+                  {...props}
+                  posts={this.state.posts}
+                  handleBookmark={this.handleBookmark}
+                  handleRemoveBookmark={this.handleRemoveBookmark}
+                  handleRemove={this.handleRemove}
+                  handleWindow={this.handleWindow()}
+                />
+              )}
+            />
 
-    return (
-      <Router>
-        <div className="App">
-          <Route path="*" render={(props) => <Header {...props} />} />
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <Content
-                posts={this.state.posts}
-                bookmarks={this.state.posts.filter((post) => post.bookmark)}
-                handleBookmark={this.handleBookmark}
-                handleRemoveBookmark={this.handleRemoveBookmark}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/new"
-            render={() => <NewStory handleSubmission={this.handleSubmission} />}
-          />
-          <Route
-            exact
-            path="/bookmark"
-            render={() => (
-              <Bookmark
-                bookmarks={this.state.posts.filter((post) => post.bookmark)}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/post/:id"
-            render={(props) => (
-              <SinglePost
-                {...props}
-                posts={this.state.posts}
-                handleBookmark={this.handleBookmark}
-                handleRemoveBookmark={this.handleRemoveBookmark}
-                handleRemove={this.handleRemove}
-                handleWindow={this.handleWindow()}
-              />
-            )}
-          />
-
-          <Footer />
-        </div>
-      </Router>
-    );
+            <Footer />
+          </div>
+        </Router>
+      );
+    }
   }
-}
+
