@@ -13,7 +13,7 @@ export default ({ toggleState }) => {
       ...password.value && { password: password.value },
     };
 
-    await fetch(`http://127.0.0.1:5400/auth/login`, {
+    await fetch(`https://auth-blog.herokuapp.com/auth/login`, {
       method: "POST",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -24,12 +24,11 @@ export default ({ toggleState }) => {
       .then((response) => {
         if (response.status === 200) {
           localStorage.setItem("auth", response.token);
-          loginFunc(response.token)
-        } else alert("Erorro herer")
+          loginFunc(response.token);
+        } else console.log("error");
       })
       .catch((error) => {
-        console.log(error)
-        alert("Error ss")
+        console.log(error);
       });
 
   };
@@ -57,8 +56,8 @@ export default ({ toggleState }) => {
         <button className="btn " type="submit">
           Submit
         </button>
-        <p>To login in use :
-          <span>Email</span> testuser@gmail.com
+        <p>To login in use : <br />
+          <span>Email</span> testuser@gmail.com <br />
 <span>Password</span>testuser
         </p>
       </form>

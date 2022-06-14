@@ -102,17 +102,16 @@ export default class App extends Component {
 
     
 
-      await fetch(`http://127.0.0.1:5400/auth/checkMe`, {
+      await fetch(`https://auth-blog.herokuapp.com/auth/checkMe`, {
         method: "POST",
         headers: new Headers({
           "Content-Type": "application/json",
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         }),
-        body: token ? JSON.stringify({token}) : null,
+        body: token ? JSON.stringify({ token }) : null,
       })
         .then((data) => data.json())
         .then((response) => {
-
           if (response.status === 200) {
             this.setState({ auth: true });
           } else this.setState({ auth: false });
