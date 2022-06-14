@@ -75,9 +75,10 @@ export default class App extends Component {
   render() {
 
 
-    if (this.state.token.logged === false) return <Login />;
+    if (this.state.token.logged === false) {
+      return <Login />;
     
-    
+    {
       return (
         <Router basename="/react-mini-blog">
           <div className="App">
@@ -131,4 +132,4 @@ export default class App extends Component {
       );
     }
   }
-
+}

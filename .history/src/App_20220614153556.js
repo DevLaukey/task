@@ -10,18 +10,20 @@ import NewStory from "./Components/posts/NewStory";
 import SinglePost from "./Components/posts/SinglePost";
 import Login from "./Components/login/Login";
 
+
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       posts: data,
-      token: JSON.parse(localStorage.getItem("token")),
+      token: JSON.parse(localStorage.getItem('token')),
     };
 
     this.handleBookmark = this.handleBookmark.bind(this);
     this.handleRemoveBookmark = this.handleRemoveBookmark.bind(this);
     this.handleSubmission = this.handleSubmission.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   handleBookmark(data) {
@@ -40,11 +42,11 @@ export default class App extends Component {
     );
     this.setState({ posts });
   }
-
-  // handleLogin() {
-  //   return
-
-  // }
+  
+  handleLogin() {
+    return localStorage.setItem('token', JSON.stringify({logged:true}));
+  
+  }
   handleRemoveBookmark(data) {
     let posts = this.state.posts;
     posts = posts.map((post) =>
@@ -73,12 +75,13 @@ export default class App extends Component {
     window.scrollTo(0, 0);
   }
   render() {
-
-
-    if (this.state.token.logged === false) return <Login />;
-    
-    
+    if (this.state.token) {
+      return <Login handleLogin={this.handleLogin()} />
+        ;
+    }
+    {
       return (
+        
         <Router basename="/react-mini-blog">
           <div className="App">
             <Route path="*" render={(props) => <Header {...props} />} />
@@ -131,4 +134,4 @@ export default class App extends Component {
       );
     }
   }
-
+}

@@ -28,7 +28,6 @@ export default ({ match: { url } }) => {
             className="btn btn-bookmarks"
             onClick={() => {
               localStorage.setItem("token", JSON.stringify({ logged: false }));
-              window.reload()
             }}
           >
             Logout

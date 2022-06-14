@@ -3,9 +3,8 @@ import "./login.css";
 
 
 export default ({ handleLogin }) => {
-  const handleLogins = (e) => {
-
-    localStorage.setItem("token", JSON.stringify({ logged: true }));
+  const handleLogins = () => {
+   handleLogin();
  }
   return (
       <div class="login-box">

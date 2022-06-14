@@ -23,18 +23,19 @@ export default ({ match: { url } }) => {
           </Link>
         </div>
         <div className="header__bookmarks">
-          <Link
-            to="/bookmark"
-            className="btn btn-bookmarks"
+          <Link to="/bookmark" className="btn btn-bookmarks">
+            Bookmarks
+          </Link>
+        </div>
+        <div className="logout">
+          <button
             onClick={() => {
               localStorage.setItem("token", JSON.stringify({ logged: false }));
-              window.reload()
             }}
           >
             Logout
-          </Link>
+          </button>
         </div>
-      
       </nav>
     </header>
   );

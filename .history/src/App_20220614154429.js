@@ -73,11 +73,11 @@ export default class App extends Component {
     window.scrollTo(0, 0);
   }
   render() {
-
-
-    if (this.state.token.logged === false) return <Login />;
-    
-    
+    console.log(first)
+    if (!this.state.token.logged) {
+      return <Login />;
+    }
+    {
       return (
         <Router basename="/react-mini-blog">
           <div className="App">
@@ -131,4 +131,4 @@ export default class App extends Component {
       );
     }
   }
-
+}

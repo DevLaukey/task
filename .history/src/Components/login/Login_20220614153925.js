@@ -4,7 +4,8 @@ import "./login.css";
 
 export default ({ handleLogin }) => {
   const handleLogins = (e) => {
-
+   e.preventDefault();  
+console.log("s")
     localStorage.setItem("token", JSON.stringify({ logged: true }));
  }
   return (
