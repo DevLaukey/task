@@ -22,7 +22,7 @@ export default ({
         {post.isVideo ? (
           <video className="image" src={post.path} autoPlay loop controls />
         ) : (
-          <img className="image" src={post.path} alt="image" />
+          <img className="image" src={post.path}" />
         )}
         {renderHTML(post.body)}
       </div>

@@ -1,14 +1,18 @@
 import React, { Component } from "react";
 import uuidv1 from "uuid/v1";
-import { Editor, EditorState, RichUtils, getDefaultKeyBinding } from "draft-js";
+import { Editor,EditorState, RichUtils, getDefaultKeyBinding } from "draft-js";
 
 import { stateToHTML } from "draft-js-export-html";
 import BlockStyleControls from "../RichText/BlockStyleControls";
 import InlineStyleControls from "../RichText/InlineStyleControls";
 import "./posts.css";
 import "../../RichText.css";
+import  { Route}  from "react-router-dom";
+
+
 
 export default class NewStory extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -118,23 +122,17 @@ export default class NewStory extends Component {
   handleSubmit() {
     const { title, body, isVideo, path } = this.state;
     if (title && body && path) {
-      let newStory = {
-        id: uuidv1(),
-        title,
-        body,
-        isVideo,
-        path,
-        bookmark: false,
-      };
+      let newStory = { id: uuidv1(), title, body, isVideo, path, bookmark: false };
       this.props.handleSubmission(newStory);
       this.setState({
         editorState: EditorState.createEmpty(),
         title: "",
         body: "",
-        preview: "",
-        data: null,
+        preview:"",
+        data:null,
         done: "submitted",
       });
+      <Route to="/" />
     }
   }
 
@@ -196,7 +194,9 @@ export default class NewStory extends Component {
                 />
               </div>
             </div>
-            <figure className="media">{preview}</figure>
+            <figure className="media">
+              {preview}
+            </figure>
             {/* <button className="primary upload" onClick={this.upload}>
               Upload
             </button> */}

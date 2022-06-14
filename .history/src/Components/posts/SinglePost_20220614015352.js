@@ -1,4 +1,5 @@
 import React from "react";
+import { render } from "react-dom";
 import renderHTML from "react-render-html";
 import "./posts.css"; // This is the css file for the posts
 export default ({
