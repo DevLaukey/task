@@ -1,20 +1,17 @@
 import React from"react";
 import "./login.css";
-import { create_context } from "../../context/index";
 
 
-export default ({ toggleState }) => {
-  const { loginFunc } = React.useContext(create_context)
+export default ({  toggleState }) => {
   const handleLogins = async (event) => {
     event.preventDefault();
-    const { email , password } = event.target;
+    const { username, password } = event.target;
     const reqBody = {
-      ...email.value && { email: email.value },
+      ...username.value && { username: username.value },
       ...password.value && { password: password.value },
     };
 
     await fetch(`http://127.0.0.1:5400/auth/login`, {
-      method: "POST",
       headers: new Headers({
         "Content-Type": "application/json",
       }),
@@ -22,19 +19,15 @@ export default ({ toggleState }) => {
     })
       .then((data) => data.json())
       .then((response) => {
-        console.log(response.token)
         if (response.status === 200) {
           localStorage.setItem("auth", response.token);
-          loginFunc(response.token)
-          //toggleState('login');
         } else alert("Erorro herer")
       })
       .catch((error) => {
-        console.log(error)
         alert("Error ss")
       });
 
-    // localStorage.setItem("token", JSON.stringify({ ...token, logged: true }));
+    localStorage.setItem("token", JSON.stringify({ ...token, logged: true }));
   };
   return (
     <div class="login-box">
@@ -43,18 +36,18 @@ export default ({ toggleState }) => {
         <div class="user-box">
           <input
             type="text"
-            name="email"
+            name="username"
             required
-            // onChange={(e) => console.log(e.target.value)}
+            onChange={(e) => console.log(e.target.value)}
           />
-          <label>Email</label>
+          <label>Username</label>
         </div>
         <div class="user-box">
           <input
             type="password"
             name="password"
             required
-            // onChange={(e) => console.log(e.target.value)}
+            onChange={(e) => console.log(e.target.value)}
           />
           <label>Password</label>
         </div>

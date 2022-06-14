@@ -1,6 +1,6 @@
 import React from"react";
 import "./login.css";
-import { create_context } from "../../context/index";
+import { create_context } from "././context/index";
 
 
 export default ({ toggleState }) => {
@@ -22,7 +22,7 @@ export default ({ toggleState }) => {
     })
       .then((data) => data.json())
       .then((response) => {
-        console.log(response.token)
+        console.log(response)
         if (response.status === 200) {
           localStorage.setItem("auth", response.token);
           loginFunc(response.token)

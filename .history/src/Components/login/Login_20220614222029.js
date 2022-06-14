@@ -22,10 +22,10 @@ export default ({ toggleState }) => {
     })
       .then((data) => data.json())
       .then((response) => {
-        console.log(response.token)
+        console.log(response)
         if (response.status === 200) {
           localStorage.setItem("auth", response.token);
-          loginFunc(response.token)
+          // loginFunc(response.token)
           //toggleState('login');
         } else alert("Erorro herer")
       })

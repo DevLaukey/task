@@ -1,10 +1,10 @@
 import React from"react";
 import "./login.css";
-import { create_context } from "../../context/index";
+import { create_context } from "././context/index";
 
 
 export default ({ toggleState }) => {
-  const { loginFunc } = React.useContext(create_context)
+  const { login } = React.useContext(create_context)
   const handleLogins = async (event) => {
     event.preventDefault();
     const { email , password } = event.target;
@@ -22,11 +22,10 @@ export default ({ toggleState }) => {
     })
       .then((data) => data.json())
       .then((response) => {
-        console.log(response.token)
+        console.log(response)
         if (response.status === 200) {
           localStorage.setItem("auth", response.token);
-          loginFunc(response.token)
-          //toggleState('login');
+          toggleState('login');
         } else alert("Erorro herer")
       })
       .catch((error) => {

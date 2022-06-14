@@ -28,7 +28,7 @@ export default ({ match: { url } }) => {
           <Link
             to="/bookmark"
             className="btn btn-bookmarks"
-            onClick={() => logoutFunc()}
+            onClick={() => logoutFunc()
           >
             Logout
           </Link>

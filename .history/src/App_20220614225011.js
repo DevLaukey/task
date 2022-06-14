@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component , useContext } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import data from "./data";
@@ -111,7 +111,7 @@ export default class App extends Component {
           "Content-Type": "application/json",
           'Authorization': `Bearer ${token}`,
         }),
-        body: token ? JSON.stringify({token}) : null,
+        body: undefined,
       })
         .then((data) => data.json())
         .then((response) => {

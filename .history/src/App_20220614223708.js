@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component , useContext } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import data from "./data";
@@ -102,27 +102,19 @@ export default class App extends Component {
         this.setState({ auth: false });
         return;
       }
-
-    
-
-      await fetch(`http://127.0.0.1:5400/auth/checkMe`, {
-        method: "POST",
-        headers: new Headers({
-          "Content-Type": "application/json",
-          'Authorization': `Bearer ${token}`,
-        }),
-        body: token ? JSON.stringify({token}) : null,
+      
+      await fetch(`http://127.0.0.1:5400/auth/checkMe`, { 
+        method: 'GET',
+        headers: new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }),
+        body:undefined,
       })
-        .then((data) => data.json())
-        .then((response) => {
-          console.log(response);
-          if (response.status === 200) {
-            this.setState({ auth: true });
-          } else this.setState({ auth: false });
+        .then(data => data.json()) 
+        .then(response => {
+          console.log(response)
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
-        });
+      })
     }
     getState();
   }

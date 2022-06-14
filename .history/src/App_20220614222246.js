@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component , useContext } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import data from "./data";
@@ -95,7 +95,9 @@ export default class App extends Component {
 
   componentDidMount() {
   console.log(this.state.auth);
+    console.log("sTsjhdjshdj")
     const getState = async () => {
+      console.log("sTsjhdjshdj sdsd")
       const token = localStorage.getItem('auth');
       if (!token) {
         console.log("data ")
@@ -103,26 +105,18 @@ export default class App extends Component {
         return;
       }
 
-    
-
-      await fetch(`http://127.0.0.1:5400/auth/checkMe`, {
-        method: "POST",
-        headers: new Headers({
-          "Content-Type": "application/json",
-          'Authorization': `Bearer ${token}`,
-        }),
-        body: token ? JSON.stringify({token}) : null,
+      await fetch(`http://127.0.0.1:5400/auth/checkMe`, { 
+        method: 'GET',
+        headers: new Headers({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }),
+        body:undefined,
       })
-        .then((data) => data.json())
-        .then((response) => {
-          console.log(response);
-          if (response.status === 200) {
-            this.setState({ auth: true });
-          } else this.setState({ auth: false });
+        .then(data => data.json()) 
+        .then(response => {
+          console.log(response)
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
-        });
+      })
     }
     getState();
   }
@@ -131,23 +125,7 @@ export default class App extends Component {
   render() {
 
     console.log("object");
-    if (!this.state.auth) return (
-      <CreateContext.Provider
-        value={{
-          loginFunc: (token) => {
-            this.setState({ auth: true });
-            console.log(this.state.auth);
-            localStorage.setItem("auth", token);
-          },
-          logoutFunc: () => {
-            this.setState({ auth: false });
-            localStorage.removeItem("auth");
-          },
-        }}
-      >
-        <Login toggleState={this.toggleState} />
-      </CreateContext.Provider>
-    );
+    if (!this.state.auth) return <Login toggleState={this.toggleState} />;
 
 
     // if (this.state.token.logged === false) return <Login  />;
@@ -156,7 +134,7 @@ export default class App extends Component {
       <CreateContext.Provider
         value={{
           loginFunc: (token) => {
-            this.setState({ auth: true })
+            // this.setState({ auth: true });
             localStorage.setItem("auth", (token));
           },
           logoutFunc: () => { this.setState({ auth: false }); localStorage.removeItem("auth"); },

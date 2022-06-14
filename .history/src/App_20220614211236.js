@@ -9,7 +9,7 @@ import Bookmark from "./Components/content/Bookmark";
 import NewStory from "./Components/posts/NewStory";
 import SinglePost from "./Components/posts/SinglePost";
 import Login from "./Components/login/Login";
-import { create_context  as CreateContext } from "./context/index";
+
 
 
 
@@ -79,89 +79,36 @@ export default class App extends Component {
   }
 
 
-  toggleState(type) {
-
-
-    
-
-    if(type === "login"){
-      this.setState({ auth: true });
-      // console.log(type)
-    } else if (type === "signout") {
-      this.setstate({ auth: false });
-    }
-  }
-
-
   componentDidMount() {
-  console.log(this.state.auth);
     const getState = async () => {
       const token = localStorage.getItem('auth');
       if (!token) {
-        console.log("data ")
         this.setState({ auth: false });
         return;
       }
 
-    
-
-      await fetch(`http://127.0.0.1:5400/auth/checkMe`, {
-        method: "POST",
-        headers: new Headers({
-          "Content-Type": "application/json",
-          'Authorization': `Bearer ${token}`,
-        }),
-        body: token ? JSON.stringify({token}) : null,
+      await fetch(`http://127.0.0.1:5400/auth/checkMe`, { 
+        method: 'GET',
+        headers: new Headers({ 'Content-Type': 'application/json', 'Authization': `Bearer ${token}` }),
+        body:undefined,
       })
-        .then((data) => data.json())
-        .then((response) => {
-          console.log(response);
-          if (response.status === 200) {
-            this.setState({ auth: true });
-          } else this.setState({ auth: false });
+        .then(data => data.json()) 
+        .then(response => {
+          console.log(response)
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
-        });
+      })
     }
-    getState();
   }
 
-
   render() {
-
-    console.log("object");
-    if (!this.state.auth) return (
-      <CreateContext.Provider
-        value={{
-          loginFunc: (token) => {
-            this.setState({ auth: true });
-            console.log(this.state.auth);
-            localStorage.setItem("auth", token);
-          },
-          logoutFunc: () => {
-            this.setState({ auth: false });
-            localStorage.removeItem("auth");
-          },
-        }}
-      >
-        <Login toggleState={this.toggleState} />
-      </CreateContext.Provider>
-    );
+    if (!this.state.token.logged) return null;
 
 
     // if (this.state.token.logged === false) return <Login  />;
 
-    return (
-      <CreateContext.Provider
-        value={{
-          loginFunc: (token) => {
-            this.setState({ auth: true })
-            localStorage.setItem("auth", (token));
-          },
-          logoutFunc: () => { this.setState({ auth: false }); localStorage.removeItem("auth"); },
-        }}
-      >
+      return (
         <Router>
           <div className="App">
             <Route path="*" render={(props) => <Header {...props} />} />
@@ -211,7 +158,6 @@ export default class App extends Component {
             <Footer />
           </div>
         </Router>
-      </CreateContext.Provider>
-    );
+      );
   }
 }

@@ -3,7 +3,8 @@ import "./login.css";
 import { create_context } from "../../context/index";
 
 
-export default ({ toggleState }) => {
+
+export default () => {
   const { loginFunc } = React.useContext(create_context)
   const handleLogins = async (event) => {
     event.preventDefault();
@@ -22,7 +23,7 @@ export default ({ toggleState }) => {
     })
       .then((data) => data.json())
       .then((response) => {
-        console.log(response.token)
+        console.log(response)
         if (response.status === 200) {
           localStorage.setItem("auth", response.token);
           loginFunc(response.token)
