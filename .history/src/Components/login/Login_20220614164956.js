@@ -3,7 +3,7 @@ import "./login.css";
 
 
 export default ({ token }) => {
-  const handleLogins = () => {
+  const handleLogins = (e) => {
    
 
     localStorage.setItem("token", JSON.stringify({ ...token, logged: true }));
